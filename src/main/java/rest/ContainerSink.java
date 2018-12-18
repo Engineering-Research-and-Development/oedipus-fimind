@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
@@ -37,6 +38,15 @@ public class ContainerSink {
 
 	private static Entity lastWeatherEntity; 
 
+	
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response createDataInJSON() { 
+		 logger.debug("CIAO");
+		 String result = "Data GET";
+		 return Response.status(201).entity(result).build(); 
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createDataInJSON(String data) { 
@@ -155,7 +165,7 @@ public class ContainerSink {
 			MindsphereCredentials credentials = MindsphereCredentials.builder()
 					.clientId(prop.getProperty("client-id"))
 					.clientSecret(prop.getProperty("client-secret"))
-					.tenant("engineer")
+					.tenant(prop.getProperty("engineer"))
 					.build();
 
 		
