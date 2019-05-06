@@ -50,6 +50,7 @@ public class ContainerSink {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createDataInJSON(String data) { 
+		System.out.println("test");
 		 logger.debug("Data ="+data);
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -165,7 +166,7 @@ public class ContainerSink {
 			MindsphereCredentials credentials = MindsphereCredentials.builder()
 					.clientId(prop.getProperty("client-id"))
 					.clientSecret(prop.getProperty("client-secret"))
-					.tenant(prop.getProperty("engineer"))
+					.tenant(prop.getProperty("tenant"))
 					.build();
 
 		
